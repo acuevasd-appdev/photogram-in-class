@@ -7,7 +7,7 @@ function Navigation(){
 
     return(
         <View>
-            {user ? <Text>Home Screen</Text> : <SignIn />}
+            {user ? <Text>Home Screen</Text> : <SignIn setUser={setUser}/>}
         </View>
     )
 

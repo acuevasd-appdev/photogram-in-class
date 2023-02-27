@@ -2,7 +2,7 @@ import React from "react";
 import {View, Text, TextInput, StyleSheet, Button} from "react-native";
 import { axiosInstance } from "../../utils";
 
-function SignIn(){
+function SignIn( {setUser} ){
     const [email,setEmail] = React.useState("");
     const [password,setPassword] = React.useState("");
 
@@ -18,7 +18,7 @@ function SignIn(){
             }
 
             const response = await axiosInstance.post(apiEndPoint, body);
-            console.log(response.data);
+            setUser(response.data);
         
         } catch (error) {
             console.error(error.toJSON());
