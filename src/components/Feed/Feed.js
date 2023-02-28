@@ -1,9 +1,23 @@
 import React from "react";
-import {View,Text, ScrollView} from "react-native";
+import {View,Text, ScrollView, StyleSheet, FlatList} from "react-native";
 import {axiosInstance} from "../../utils";
+
+function Photo({ photo }) {
+    return (
+        <View>
+            <Text>{photo.image}</Text>
+        </View>
+    )
+}
 
 function Feed({user}){
     const [photos, setPhotos] = React.useState([]);
+
+    function ListHeader() {
+        return (
+            <Text style={styles.title}>feed</Text>
+        )
+    }
 
     async function getFeed() {
         try {
@@ -22,18 +36,16 @@ function Feed({user}){
     return (
         <View>
             <Text>
-                Feed
-                {`/${user.username}/feed.json?user_email=${user.email}&user_token=${user.authentication_token}`}
+                feed
+            </Text>
+            <Text>
+                post by people you follow
             </Text>
             <ScrollView>
                 {
                     photos.map((photo) => {
                         return (
-                            <View> 
-                                <Text>
-                                    a photo
-                                </Text>
-                            </View>
+                            <Photo photo={photo} key={photo.id} />
                         )    
 
                     })
@@ -42,5 +54,16 @@ function Feed({user}){
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    title: {
+        fontSize: 28, 
+        fontWeight: '600'
+    },
+    contentContainer: {
+        padding: 12
+    }
+})
+
 
 export default Feed;
