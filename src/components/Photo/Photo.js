@@ -14,7 +14,7 @@ function Photo({photo}) {
             <View style={styles.imageWrapper}>
                 <Image
                     style={styles.image}
-                    source= {{ url: `https://industrial-auth-api.fly.dev${photo.image}` }}
+                    source= {{ uri: `https://industrial-auth-api.fly.dev${photo.image}` }}
                 />   
             </View> 
 
