@@ -5,10 +5,13 @@ function Photo({photo}) {
 
     return (
         <View style={styles.photo}>
-            <Text>owner</Text>
+            <Text style={styles.username}>{photo.owner.username}</Text>
 
-            <View>
-                <Text>image</Text>   
+            <View style={styles.imageWrapper}>
+                <Image
+                    style={styles.image}
+                    source= {{ url: `https://industrial-auth-api.fly.dev${photo.image}` }}
+                />   
             </View> 
 
             <View>
