@@ -1,11 +1,15 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
+import { AntDesign } from '@expo/vector-icons';
 
 function Photo({photo}) {
 
     return (
         <View style={styles.photo}>
-            <Text style={styles.username}>{photo.owner.username}</Text>
+            <View style={styles.owner}>
+                <AntDesign name="user" color="deepskyblue" /> 
+                <Text style={styles.username}>{photo.owner.username}</Text>
+            </View>
 
             <View style={styles.imageWrapper}>
                 <Image
@@ -14,8 +18,11 @@ function Photo({photo}) {
                 />   
             </View> 
 
-            <View>
-                <Text>likes</Text>   
+            <View style={styles.likes}>
+                <AntDesign name="hearto" color="deeppink" />
+                <Text style={styles.likesCount}>
+                    {photo.likes_count} {photo.likes_count === 1 ? "like" : "likes"}
+                </Text>
             </View> 
 
             <Text style={styles.caption}>{photo.caption}</Text> 
@@ -46,6 +53,7 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     username: {
+        marginLeft: 6,
         fontWeight: '700'
     },
     likes: {
@@ -57,7 +65,11 @@ const styles = StyleSheet.create({
     },
     caption: {
         marginTop: 12,
-    }
+    },
+    owner: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
 })
 
 export default Photo;
