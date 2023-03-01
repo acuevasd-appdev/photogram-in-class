@@ -2,6 +2,7 @@ import React from "react";
 import {View, Text} from "react-native";
 import SignIn from "../SignIn.js/SignIn";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Feed from "../Feed/Feed";
 
 function Navigation(){
     const [user, setUser] = React.useState(null);
@@ -36,7 +37,7 @@ function Navigation(){
 
     return(
         <View>
-            {user ? <Text>Home Screen</Text> : <SignIn setUser={setUser}/>}
+            {user ? <Feed user={user}/> : <SignIn setUser={setUser}/>}
         </View>
     )
 
